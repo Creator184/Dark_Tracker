@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IP Tracker</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff00;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 20px;
+    }
+    #terminal {
+      white-space: pre-wrap;
+      font-size: 1.2em;
+      line-height: 1.4em;
+    }
+    .blink {
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="terminal"></div>
+  <script>
+    const lines = [
+      "Initializing system...",
+      "Establishing secure connection...",
+      "Connection established [OK]",
+      "Scanning IP address...",
+      "IP found: 192.168.1.66",
+      "Location: Unknown",
+      "Attempting trace...",
+      "Trace initiated...",
+      "Trace progress: ███░░░░░░░ 32%",
+      "Trace progress: ██████░░░░ 65%",
+      "Trace progress: ██████████ 100%",
+      "Target located...",
+      "Accessing webcam...",
+      "Error: Webcam access denied.",
+      "Deploying countermeasures...",
+      "Just kidding. Or am I?",
+      "",
+      ">>> Press ALT+F4 to terminate the trace <<<"
+    ];
+
+    const terminal = document.getElementById("terminal");
+    let i = 0;
+
+    function typeLine() {
+      if (i < lines.length) {
+        terminal.innerHTML += lines[i] + "\n";
+        i++;
+        setTimeout(typeLine, 800);
+      } else {
+        terminal.innerHTML += "\n<span class='blink'>_</span>";
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
